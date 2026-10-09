@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="disabled-adaptations" content="watch">
+<meta name="robots" content="noindex">
+<title>Cola LFA P1</title>
+<style>
+body { margin: 0; }
+/* Layout: one narrow column sized for a 162–184pt watch screen; type scales with viewport width so the same page reads on a phone. */
+:root {
+  --bg: #000000;
+  --card: #15191E;
+  --ink: #F2F5F8;
+  --muted: #9AA7B4;
+  --line: #2A323B;
+  --accent: #6FB3F2;
+  --rule: #FFD479;
+  --ok: #7ED98A;
+  --warn: #FF9F6B;
+  --font-ui: ui-rounded, "SF Pro Rounded", -apple-system, system-ui, "Segoe UI", sans-serif;
+  --font-rule: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  color-scheme: dark;
+  font-size: clamp(14px, 8.6vw, 26px);
+}
+@media (min-width: 500px) { :root { font-size: 18px; } }
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-ui); font-size: 1rem; line-height: 1.32; -webkit-text-size-adjust: 100%; }
+main { max-width: 23rem; margin: 0 auto; padding-inline: clamp(8px, 5vw, 16px); padding-block: 0.5rem 2.5rem; display: flex; flex-direction: column; gap: 0.9rem; }
+h1 { margin: 0; font-size: 1.05rem; font-weight: 700; color: var(--accent); }
+.sub { margin: 0; font-size: 0.78rem; color: var(--muted); }
+a { color: inherit; text-decoration: none; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.index { display: grid; grid-template-columns: 1fr 1fr; gap: 0.35rem; }
+.index a { display: flex; align-items: center; justify-content: center; min-height: 2.6rem; padding: 0.3rem 0.2rem; background: var(--card); color: var(--accent); border-radius: 0.7rem; font-size: 0.74rem; font-weight: 600; line-height: 1.1; min-width: 0; white-space: nowrap; }
+
+.card { background: var(--card); border-radius: 0.9rem; padding: 0.6rem 0.6rem 0.5rem; display: flex; flex-direction: column; gap: 0.45rem; scroll-margin-top: 0.4rem; min-width: 0; }
+.card h2 { margin: 0; font-size: 0.95rem; font-weight: 700; color: var(--accent); display: flex; flex-wrap: wrap; gap: 0 0.35rem; align-items: baseline; }
+.card h2 small { font-size: 0.75rem; font-weight: 600; color: var(--muted); }
+.card p { margin: 0; font-size: 0.86rem; }
+.card ol, .card ul { margin: 0; padding-left: 1.05rem; font-size: 0.86rem; display: flex; flex-direction: column; gap: 0.2rem; }
+.lbl { font-size: 0.66rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); }
+.r { font-family: var(--font-rule); font-size: 0.84rem; color: var(--rule); line-height: 1.38; overflow-wrap: anywhere; }
+.r.blk { display: block; padding: 0.3rem 0.4rem; background: var(--bg); border-radius: 0.45rem; }
+.r i { font-style: normal; color: var(--muted); }
+.r sub, .r sup { font-size: 0.72em; line-height: 0; }
+.warn { color: var(--warn); }
+.say { border-left: 2px solid var(--ok); padding-left: 0.4rem; color: var(--ok); font-size: 0.82rem; }
+.top { align-self: flex-end; font-size: 0.72rem; color: var(--muted); padding: 0.35rem 0.2rem 0.1rem 0.8rem; }
+dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 0.25rem 0.45rem; font-size: 0.86rem; }
+dt { font-weight: 700; color: var(--accent); }
+dd { margin: 0; min-width: 0; }
+</style>
+</head>
+<body>
+
+<main id="topo">
+  <header>
+    <h1>Cola LFA · P1</h1>
+    <p class="sub">Toque num tema.</p>
+  </header>
+
+  <nav class="index" aria-label="Temas">
+    <a href="#tipo">Tipo</a>
+    <a href="#ambigua">Ambígua</a>
+    <a href="#lambda">λ-livre</a>
+    <a href="#fnc">FNC</a>
+    <a href="#recursao">Recursão</a>
+    <a href="#fng">FNG</a>
+    <a href="#regular">Regular</a>
+    <a href="#intersecao">Interseção</a>
+  </nav>
+
+  <section class="card" id="tipo">
+    <h2>1 · Tipo <small>teste 3→0</small></h2>
+    <dl>
+      <dt>3</dt><dd>Regular. Direita: no máx. 1 maiúscula, sempre na mesma ponta. <span class="r">A→aB | a</span></dd>
+      <dt>2</dt><dd>GLC. Esquerda: 1 única maiúscula.</dd>
+      <dt>1</dt><dd>Direita nunca menor que a esquerda.</dd>
+      <dt>0</dt><dd>O resto.</dd>
+    </dl>
+    <p class="warn">Misturar <span class="r">A→aB</span> com <span class="r">A→Ba</span> não é 3, é 2.</p>
+    <p class="say">“Tipo 2: um único não-terminal à esquerda. Não é 3: a produção … não é linear à direita nem à esquerda.”</p>
+    <a class="top" href="#topo">↑ temas</a>
+  </section>
+
+  <section class="card" id="ambigua">
+    <h2>2 · Ambígua</h2>
+    <p>Uma palavra com <strong>2 árvores</strong> (ou 2 derivações mais à esquerda).</p>
+    <span class="lbl">Onde procurar</span>
+    <ul>
+      <li>Maiúscula repetida: <span class="r">E+E, SS, aSbS</span></li>
+      <li>Frente e trás: <span class="r">bA, Ab</span></li>
+      <li>Dois caminhos: <span class="r">A→X | Y</span></li>
+    </ul>
+    <span class="lbl">Palavras que provam</span>
+    <span class="r blk">A→AAA|a|bA|Ab<br><i>palavra:</i> bab<br>A⇒bA⇒bAb⇒bab<br>A⇒Ab⇒bAb⇒bab</span>
+    <span class="r blk">E→E+E|E*E|…<br><i>palavra:</i> num+num*num<br><i>1ª começa:</i> E+E<br><i>2ª começa:</i> E*E</span>
+    <span class="r blk">S→aSbS|bSaS|λ<br><i>palavra:</i> abab<br>a·λ·b·(ab)<br>a·(ba)·b·λ</span>
+    <span class="r blk">S→Ad, A→X|Y<br><i>palavra:</i> abcd<br>S⇒Ad⇒Xd⇒Xcd<br>&nbsp;⇒Pcd⇒abcd<br>S⇒Ad⇒Yd⇒aYd<br>&nbsp;⇒aQd⇒abcd</span>
+    <span class="r blk">S→SS|(S)|()<br><i>palavra:</i> ()()()</span>
+    <p class="say">Não ambígua: “em cada passo só existe uma produção aplicável; cada sentença tem uma única árvore.”</p>
+    <a class="top" href="#topo">↑ temas</a>
+  </section>
+
+  <section class="card" id="lambda">
+    <h2>3 · λ-livre</h2>
+    <p>É λ-livre: nenhuma regra <span class="r">→λ</span>, ou só <span class="r">S→λ</span> com S fora de todo lado direito.</p>
+    <span class="lbl">Consertar</span>
+    <ol>
+      <li>Anuláveis (vale em cadeia: <span class="r">S→AB</span>).</li>
+      <li>Toda versão fica/some. Nunca a vazia.</li>
+      <li>Apaga as <span class="r">→λ</span>.</li>
+      <li>Inicial anulável: <span class="r">S'→S | λ</span></li>
+    </ol>
+    <span class="lbl">Exemplo</span>
+    <span class="r blk">S→aSbS|bSaS|λ<br><i>vira</i><br>S'→S | λ<br>S→aSbS|abS<br>&nbsp;|aSb|ab<br>&nbsp;|bSaS|baS<br>&nbsp;|bSa|ba</span>
+    <p class="say">“Não é λ-livre: possui …→λ e esse não-terminal aparece do lado direito.”</p>
+    <a class="top" href="#topo">↑ temas</a>
+  </section>
+
+  <section class="card" id="fnc">
+    <h2>4 · FNC</h2>
+    <p>Só <span class="r">A→BC</span> ou <span class="r">A→a</span>.</p>
+    <ol>
+      <li>Simplifica: λ e unitárias <span class="r">A→B</span>. Sem nada? Escreva isso.</li>
+      <li>Terminal acompanhado vira <span class="r">X<sub>a</sub></span>, com <span class="r">X<sub>a</sub>→a</span>.</li>
+      <li>Mais de 2 maiúsculas: quebra com <span class="r">D<sub>1</sub>, D<sub>2</sub></span>. k maiúsculas, k−2 novas.</li>
+    </ol>
+    <span class="lbl">Exemplo</span>
+    <span class="r blk">A→AAA|a|bA|Ab<br><i>vira</i><br>A→AD<sub>1</sub>|a|X<sub>b</sub>A|AX<sub>b</sub><br>D<sub>1</sub>→AA<br>X<sub>b</sub>→b</span>
+    <span class="r blk">S→[S#S]<br><i>vira</i><br>S→X<sub>[</sub>D<sub>1</sub><br>D<sub>1</sub>→SD<sub>2</sub><br>D<sub>2</sub>→X<sub>#</sub>D<sub>3</sub><br>D<sub>3</sub>→SX<sub>]</sub></span>
+    <a class="top" href="#topo">↑ temas</a>
+  </section>
+
+  <section class="card" id="recursao">
+    <h2>5 · Recursão <small>à esquerda</small></h2>
+    <span class="r blk">A→Aα | β<br><i>vira</i><br>A→β | βB<br>B→α | αB</span>
+    <p>α = o que vem depois do A. β = regras que não começam com A.</p>
+    <span class="lbl">Da prova</span>
+    <span class="r blk">L→LaS | S<br><i>vira</i><br>L→S | SB<br>B→aS | aSB</span>
+    <p class="warn">Não esqueça <span class="r">L→SB</span>: é ela que liga L ao B.</p>
+    <span class="r blk">E→E+T | T<br><i>vira</i><br>E→T | TB<br>B→+T | +TB</span>
+    <a class="top" href="#topo">↑ temas</a>
+  </section>
+
+  <section class="card" id="fng">
+    <h2>6 · FNG</h2>
+    <p>Só <span class="r">A→aB<sub>1</sub>…B<sub>k</sub></span>: um terminal na frente, depois só maiúsculas.</p>
+    <ol>
+      <li>Simplifica.</li>
+      <li>Tira recursão à esquerda.</li>
+      <li>Começa com maiúscula? Troca pelo que ela produz.</li>
+      <li>Terminal fora da frente vira <span class="r">X<sub>a</sub></span>.</li>
+    </ol>
+    <span class="lbl">Exemplo</span>
+    <span class="r blk">L→LaS|S, S→b<br><i>vira</i><br>L→b | bB<br>B→aS | aSB<br>S→b</span>
+    <span class="r blk">S→FN FV<br>FN→AR ST<br>AR→o|um<br><i>vira</i><br>S→o ST FV<br>&nbsp;|um ST FV</span>
+    <a class="top" href="#topo">↑ temas</a>
+  </section>
+
+  <section class="card" id="regular">
+    <h2>7 · Regular</h2>
+    <span class="lbl">Achar a linear</span>
+    <ol>
+      <li>Diga a linguagem em uma frase.</li>
+      <li>O que lembrar lendo da esquerda? Cada situação é uma maiúscula.</li>
+      <li><span class="r">A→aB</span>: li a, fui para B. Pode parar em B? Escreva <span class="r">A→a</span>.</li>
+      <li>λ-livre: só <span class="r">S'→λ</span>.</li>
+    </ol>
+    <span class="r blk"><i>comprimento par:</i><br>S'→0A|1A|λ<br>S→0A|1A<br>A→0S|1S|0|1</span>
+    <span class="lbl">Regular para FNC</span>
+    <span class="r blk">A→a <i>já está</i><br>A→aB <i>vira</i> A→X<sub>a</sub>B<br>X<sub>a</sub>→a<br>A→λ <i>tira antes</i><br>A→B <i>substitui</i></span>
+    <a class="top" href="#topo">↑ temas</a>
+  </section>
+
+  <section class="card" id="intersecao">
+    <h2>8 · Interseção</h2>
+    <span class="r blk">L<sub>1</sub>={a<sup>n</sup>b<sup>n</sup>c<sup>i</sup>}<br>S→Sc | T<br>T→aTb | ab</span>
+    <span class="r blk">L<sub>2</sub>={a<sup>j</sup>b<sup>n</sup>c<sup>n</sup>}<br>S→aS | T<br>T→bTc | bc</span>
+    <span class="r blk">L<sub>1</sub>∩L<sub>2</sub>={a<sup>n</sup>b<sup>n</sup>c<sup>n</sup>}<br><i>não é LLC</i></span>
+    <span class="lbl">Bombeamento</span>
+    <ol>
+      <li>Suponha LLC, constante p.</li>
+      <li><span class="r">z=a<sup>p</sup>b<sup>p</sup>c<sup>p</sup>=uvwxy</span></li>
+      <li><span class="r">|vwx|≤p</span>: v e x tocam no máximo 2 tipos de letra.</li>
+      <li><span class="r">i=2</span>: <span class="r">uv<sup>2</sup>wx<sup>2</sup>y</span> desiguala as quantidades. Contradição.</li>
+    </ol>
+    <p class="say">“L<sub>1</sub> e L<sub>2</sub> são LLC, mas L<sub>1</sub>∩L<sub>2</sub> não é; logo as LLC não são fechadas para a interseção.”</p>
+    <a class="top" href="#topo">↑ temas</a>
+  </section>
+</main>
+
+</body>
+</html>
